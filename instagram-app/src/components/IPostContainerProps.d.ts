@@ -1,0 +1,3 @@
+interface IPostContainerProps {
+	post: Object;
+}

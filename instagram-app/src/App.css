@@ -1,0 +1,19 @@
+span.bold {
+	font-weight: bold;
+}
+span.m-5-10 {
+	margin: 5px 10px;
+}
+div.post {
+	margin: 10px auto;
+	border: 2px solid #d0d0d0;
+	border-radius: 5px;
+	max-width: 640px;
+}
+div.post .inner {
+	padding: 10px 20px;
+	line-height: 16px;
+}
+
+div.post .inner p {
+}

@@ -1,0 +1,13 @@
+div#SearchBar {
+	/* min-height: 24px;
+	line-height: 16px;
+	max-width: 400px;
+	margin: 10px auto;	border-bottom: 1px solid lightgrey; */
+	max-width: 640px;
+	margin: 10px auto;
+}
+div#SearchBar #HeaderText {
+	color: #606060;
+	font-size: 3.2rem;
+	line-height: 3.2rem;
+}
