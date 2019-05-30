@@ -16,7 +16,7 @@ class CommentSection extends React.Component<ICommentSectionProps, any> {
 
 	commentChangeHandler(event: any): void {
 		event.preventDefault();
-		let target = event.target as HTMLInputElement;
+		let target = event.target;
 		this.setState({ comment: target.value });
 	}
 

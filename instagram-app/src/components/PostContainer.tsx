@@ -15,7 +15,8 @@ class PostContainer extends React.Component<IPostContainerProps, any> {
 	}
 	addCommentHandler(event: React.KeyboardEvent<HTMLInputElement>): void {
 		if (event.key === 'Enter') {
-			let target = event.target as HTMLInputElement;
+			let target = event.target;
+
 			console.log(`Object: ${target.name}, Value: ${target.value}`);
 			let newPost = Object.assign(this.state.post);
 			let newId = uuid.v1();
