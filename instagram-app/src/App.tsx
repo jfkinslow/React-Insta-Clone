@@ -3,6 +3,7 @@ import './App.css';
 import data from './dummy-data';
 import SearchBar from './components/SearchBar';
 import PostContainer from './components/PostContainer';
+import fs from 'fs';
 
 const App: React.FC = () => {
 	return (
