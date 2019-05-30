@@ -2,7 +2,7 @@
 import React from 'react';
 import Comment from './Comment';
 import { TiHeartOutline } from 'react-icons/ti';
-const date = new Date();
+// const date = new Date();
 
 class CommentSection extends React.Component<ICommentSectionProps, any> {
 	constructor(props: ICommentSectionProps) {
@@ -16,7 +16,8 @@ class CommentSection extends React.Component<ICommentSectionProps, any> {
 
 	commentChangeHandler(event: any): void {
 		event.preventDefault();
-		this.setState({ comment: event.target.value });
+		let target = event.target as HTMLInputElement;
+		this.setState({ comment: target.value });
 	}
 
 	render() {
@@ -40,8 +41,8 @@ class CommentSection extends React.Component<ICommentSectionProps, any> {
 					placeholder="Add a comment..."
 					className="add-comment"
 					value={this.state.comment}
-					onChange={this.commentChangeHandler}
-					onKeyDown={this.props.addCommentHandler}
+					onChange={this.commentChangeHandler.bind(this)}
+					onKeyDown={this.props.addCommentHandler.bind(this.state.parent)}
 					name={this.state.parent.state.post.id}
 				/>
 			</div>

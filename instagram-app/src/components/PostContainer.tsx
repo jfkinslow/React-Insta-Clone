@@ -1,6 +1,7 @@
 /// <reference path="./IPostContainerProps.d.ts" />
 import React from 'react';
 import CommentSection from './CommentSection';
+import uuid from 'uuid';
 
 class PostContainer extends React.Component<IPostContainerProps, any> {
 	constructor(props: IPostContainerProps) {
@@ -14,11 +15,13 @@ class PostContainer extends React.Component<IPostContainerProps, any> {
 	}
 	addCommentHandler(event: React.KeyboardEvent<HTMLInputElement>): void {
 		if (event.key === 'Enter') {
-			console.log(`Object: ${event.target.name}, Value: ${event.target.value}`);
+			let target = event.target as HTMLInputElement;
+			console.log(`Object: ${target.name}, Value: ${target.value}`);
 			let newPost = Object.assign(this.state.post);
-			let newComment = { text: event.target.value, username: 'unknown' };
-			// newPost.comments.push(newComment);
-			// this.setState({ post: newPost });
+			let newId = uuid.v1();
+			let newComment = { text: target.value, username: 'unknown', id: newId };
+			newPost.comments.push(newComment);
+			this.setState({ post: newPost });
 		} else {
 		}
 	}
