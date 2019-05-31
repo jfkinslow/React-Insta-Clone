@@ -2,6 +2,40 @@
 import React from 'react';
 import CommentSection from './CommentSection';
 import uuid from 'uuid';
+import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
+import styled from 'styled-components';
+
+const AvatarImage = styled.img`
+	width: 64px;
+`;
+
+const StyledCard = styled(Card)`
+	font-size: 1.6rem;
+	max-width: 640px;
+	margin: 10px auto;
+	justify-content: flex-start;
+`;
+
+const StyledCardBody = styled(CardBody)`
+	&& {
+		padding-top: 0;
+	}
+	flex-grow: 0;
+	flex-shrink: 0;
+`;
+
+const StyledCardHeader = styled(CardTitle)`
+	margin: 10px;
+	&& {
+		margin-bottom: 0;
+	}
+	padding: 0;
+`;
+
+const StyledCardImage = styled(CardImg)`
+	height: 400px;
+	margin: 10px 0;
+`;
 
 class PostContainer extends React.Component<IPostContainerProps, any> {
 	constructor(props: IPostContainerProps) {
@@ -47,21 +81,30 @@ class PostContainer extends React.Component<IPostContainerProps, any> {
 
 	render() {
 		return (
-			<div key={this.state.post.id}>
-				<div className="postHeader">
-					<img className="avatar" src={this.state.post.thumbnailUrl} alt={this.state.post.username} />{' '}
+			<StyledCard key={this.state.post.id}>
+				<StyledCardHeader>
+					<AvatarImage src={this.state.post.thumbnailUrl} alt={this.state.post.username} />{' '}
 					<span className="Username">{this.state.post.username}</span>
-				</div>
-				<img src={this.state.post.imageUrl} alt={this.state.post.comments[0]} />
-				<div className="inner">
-					<CommentSection
-						parent={this}
-						comments={this.state.post.comments}
-						addCommentHandler={this.addCommentHandler}
-						addLikeHandler={this.addLikeHandler}
+				</StyledCardHeader>
+				<StyledCardBody>
+					<StyledCardImage
+						src={this.state.post.imageUrl}
+						alt={
+							this.state.post.comments[0].username === this.state.post.username
+								? this.state.post.comments[0].text
+								: `${this.state.post.username} did not add a comment during the posting`
+						}
 					/>
-				</div>
-			</div>
+					<CardText>
+						<CommentSection
+							parent={this}
+							comments={this.state.post.comments}
+							addCommentHandler={this.addCommentHandler}
+							addLikeHandler={this.addLikeHandler}
+						/>
+					</CardText>
+				</StyledCardBody>
+			</StyledCard>
 		);
 	}
 }

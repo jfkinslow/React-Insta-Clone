@@ -3,6 +3,16 @@ import React from 'react';
 import data from '../dummy-data';
 import SearchBar from './SearchBar';
 import PostContainer from './PostContainer';
+import Fuse from 'fuse.js';
+const options = {
+	shouldSort: true,
+	threshold: 0.6,
+	location: 0,
+	distance: 100,
+	maxPatternLength: 32,
+	minMatchCharLength: 1,
+	keys: ['username'],
+};
 
 class PostsPage extends React.Component<IPostsPageProps, any> {
 	constructor(props: any) {
@@ -40,14 +50,23 @@ class PostsPage extends React.Component<IPostsPageProps, any> {
 	searchChangeHandler(event: React.ChangeEvent<HTMLInputElement>): void {
 		event.preventDefault();
 		let target = event.target;
+		if (target.value !== '') {
+			var fuse = new Fuse(this.state.posts, options);
+			var result = fuse.search(target.value);
+			this.setState({ filteredposts: result });
+		} else {
+			this.setState({ filteredposts: this.state.posts });
+		}
 		this.setState({ search: target.value });
 	}
 	searchHandler(event: React.KeyboardEvent<HTMLInputElement>): void {
 		if (event.key === 'Enter') {
 			let target = event.target as HTMLInputElement;
 			if (target.value !== '') {
-				let newFiltered = this.state.posts.filter((post: any) => post.username === target.value);
-				this.setState({ filteredposts: newFiltered });
+				var fuse = new Fuse(this.state.posts, options);
+				var result = fuse.search(target.value);
+
+				this.setState({ filteredposts: result });
 			} else {
 				this.setState({ filteredposts: this.state.posts });
 			}
