@@ -1,0 +1,3 @@
+interface IPostsPageProps {
+	username: String;
+}
