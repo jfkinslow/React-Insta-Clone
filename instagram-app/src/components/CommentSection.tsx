@@ -14,7 +14,7 @@ class CommentSection extends React.Component<ICommentSectionProps, any> {
 		};
 	}
 
-	commentChangeHandler(event: any): void {
+	commentChangeHandler(event: React.ChangeEvent<HTMLInputElement>): void {
 		event.preventDefault();
 		let target = event.target;
 		this.setState({ comment: target.value });
@@ -24,7 +24,10 @@ class CommentSection extends React.Component<ICommentSectionProps, any> {
 		return (
 			<div id="comment-section">
 				<div id="comment-btn">
-					<TiHeartOutline size={32} />
+					<button onClick={this.props.addLikeHandler.bind(this.state.parent)}><TiHeartOutline size={32} /></button>
+				</div>
+				<div id="likes-counter">
+					{this.state.parent.state.post.likes} Likes
 				</div>
 				<div id="comments">
 					{this.state.comments.map((comment: any, ind: number, arr: Array<Object>) => {

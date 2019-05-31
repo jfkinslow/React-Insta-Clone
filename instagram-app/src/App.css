@@ -15,5 +15,22 @@ div.post .inner {
 	line-height: 16px;
 }
 
+div.post .postHeader {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 20px 10px;
+}
+
+div.post .postHeader .avatar {
+	width: 32px;
+	border-radius: 16px;
+}
+
+div.post .postHeader .Username {
+	font-weight: bold;
+	margin-left: 5px;
+}
+
 div.post .inner p {
 }

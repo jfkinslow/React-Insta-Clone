@@ -5,6 +5,8 @@ div#SearchBar {
 	margin: 10px auto;	border-bottom: 1px solid lightgrey; */
 	max-width: 640px;
 	margin: 10px auto;
+	display: flex;
+	justify-content: space-between;
 }
 div#SearchBar #HeaderText {
 	color: #606060;

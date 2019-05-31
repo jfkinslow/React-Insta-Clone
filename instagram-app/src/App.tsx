@@ -1,19 +1,20 @@
 import React from 'react';
 import './App.css';
-import data from './dummy-data';
-import SearchBar from './components/SearchBar';
-import PostContainer from './components/PostContainer';
-
-const App: React.FC = () => {
-	return (
-		<div className="App">
-			<SearchBar />
-			{data.map((post: any, ind: number, arr: Array<any>) => {
-				console.log('PostID:', post.id);
-				return <PostContainer post={post} key={post.id} />;
-			})}
-		</div>
-	);
+import withAuthenticate from './authentication/withAuthenticate.js';
+import PostsPage from './components/PostsPage';
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage);
+class App extends React.Component<any> {
+	constructor(props: any) {
+		super(props);
+		this.state = {
+		}
+	}
+	
+	render() {
+		return (
+			<ComponentFromWithAuthenticate />
+		);
+	}
 };
 
 export default App;
