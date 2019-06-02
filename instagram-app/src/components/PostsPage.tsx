@@ -49,7 +49,7 @@ class PostsPage extends React.Component<IPostsPageProps, any> {
 	}
 	searchChangeHandler(event: React.ChangeEvent<HTMLInputElement>): void {
 		event.preventDefault();
-		let target = event.target;
+		let target = event.target as HTMLInputElement;
 		if (target.value !== '') {
 			var fuse = new Fuse(this.state.posts, options);
 			var result = fuse.search(target.value);

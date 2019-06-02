@@ -22,7 +22,7 @@ class CommentSection extends React.Component<ICommentSectionProps, any> {
 
 	commentChangeHandler(event: React.ChangeEvent<HTMLInputElement>): void {
 		event.preventDefault();
-		let target = event.target;
+		let target = event.target as HTMLInputElement;
 		this.setState({ comment: target.value });
 	}
 
