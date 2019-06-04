@@ -2,7 +2,7 @@
 import React from 'react';
 import CommentSection from './CommentSection';
 import uuid from 'uuid';
-import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardImg } from 'reactstrap';
 import styled from 'styled-components';
 
 const AvatarImage = styled.img`
@@ -22,6 +22,12 @@ const StyledCardBody = styled(CardBody)`
 	}
 	flex-grow: 0;
 	flex-shrink: 0;
+`;
+
+const CardText = styled.div`
+	&:last-child {
+		margin-bottom: 0;
+	}
 `;
 
 const StyledCardHeader = styled(CardTitle)`
